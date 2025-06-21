@@ -1,0 +1,28 @@
+GET http://localhost:8080/task
+Accept: application/json
+###
+GET http://localhost:8080/task/1
+Accept: application/json
+###
+POST http://localhost:8080/task
+Content-Type: application/json
+
+{
+"taskName": "Create project",
+  "date": "2025-06-22",
+  "comp": false
+}
+###
+DELETE http://localhost:8080/task/2
+###
+PUT http://localhost:8080/task/1
+Content-Type: application/json
+
+{
+  "taskName": "Create Spring Boot project",
+  "date": "2025-06-22"
+}
+###
+PUT http://localhost:8080/task/complete/1
+Content-Type: application/json
+###
