@@ -15,29 +15,29 @@ public class TaskController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/get")
     public ResponseEntity<?> getAll() {
         return ResponseEntity.ok(service.getAllTasks());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<?> getById(@PathVariable Long id) {
         return ResponseEntity.ok(service.getById(id));
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<?> addTask(@RequestBody TaskDTO task) {
         service.saveTask(task);
         return ResponseEntity.ok("Task added");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteTask(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.ok("Task Deleted");
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody TaskDTO task) {
         service.update(id, task);
         return ResponseEntity.ok("Task Updated");

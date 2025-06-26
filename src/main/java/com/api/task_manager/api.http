@@ -1,28 +1,51 @@
-GET http://localhost:8080/task
+GET http://localhost:8080/task/get
+Authorization: Bearer
 Accept: application/json
+
 ###
-GET http://localhost:8080/task/1
+
+GET http://localhost:8080/task/get/3
+Authorization: Bearer
 Accept: application/json
+
 ###
-POST http://localhost:8080/task
+
+POST http://localhost:8080/task/add
+Authorization: Bearer
 Content-Type: application/json
 
 {
 "taskName": "Create project",
-  "date": "2025-06-22",
+  "date": "2025-08-22",
   "comp": false
 }
+
 ###
-DELETE http://localhost:8080/task/2
+
+DELETE http://localhost:8080/task/delete/2
+
 ###
-PUT http://localhost:8080/task/1
+
+PUT http://localhost:8080/task/update/1
 Content-Type: application/json
 
 {
   "taskName": "Create Spring Boot project",
   "date": "2025-06-22"
 }
+
 ###
-PUT http://localhost:8080/task/complete/1
+
+PUT http://localhost:8080/task/complete/3
+Authorization: Bearer
 Content-Type: application/json
+
 ###
+
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}

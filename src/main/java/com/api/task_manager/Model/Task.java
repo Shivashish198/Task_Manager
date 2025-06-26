@@ -19,7 +19,6 @@ public class Task {
     @NotBlank(message="Task name cannot be blank")
     String taskName;
 
-    @NotBlank(message = "Status cannot be blank")
     boolean comp;
 
     public Task() {}
