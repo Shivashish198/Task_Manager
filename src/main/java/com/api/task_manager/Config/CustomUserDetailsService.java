@@ -8,6 +8,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println("Trying to load user " + username);
         if(username.equals("admin")) {
             return User.withUsername("admin").password("{noop}admin")
                     .roles("ADMIN")
