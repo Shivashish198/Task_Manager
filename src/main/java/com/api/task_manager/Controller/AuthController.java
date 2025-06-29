@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import lombok.Data;
@@ -29,7 +30,7 @@ public class AuthController {
     public ResponseEntity<?> login (@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getUsername());
-        String token = jwtUtil.generateToken(userDetails.getUsername());
+        String token = jwtUtil.generateToken(userDetails);
         return ResponseEntity.ok(Collections.singletonMap("token", token));
     }
 
@@ -39,7 +40,9 @@ public class AuthController {
         Claims claims = jwtUtil.extractAll(token);
         Date iat = claims.getIssuedAt();
         Date exp = claims.getExpiration();
+        String user  = claims.getSubject();
         Map<String, Object> response = new HashMap<>();
+        response.put("User: ", user);
         response.put("issued at: ", iat);
         response.put("expires at: ", exp);
         return ResponseEntity.ok(response);

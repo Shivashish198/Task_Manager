@@ -14,6 +14,12 @@ public class CustomUserDetailsService implements UserDetailsService {
                     .roles("ADMIN")
                     .build();
         }
+        else if(username.equals("user")) {
+            return User.withUsername("user")
+                    .password("{noop}user")
+                    .roles("USER")
+                    .build();
+        }
         else {
             throw new UsernameNotFoundException("User not found");
         }
