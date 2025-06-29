@@ -1,11 +1,11 @@
 GET http://localhost:8080/task/get
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvcmcuc3ByaW5nZnJhbWV3b3JrLnNlY3VyaXR5LmNvcmUudXNlcmRldGFpbHMuVXNlciBbVXNlcm5hbWU9YWRtaW4sIFBhc3N3b3JkPVtQUk9URUNURURdLCBFbmFibGVkPXRydWUsIEFjY291bnROb25FeHBpcmVkPXRydWUsIENyZWRlbnRpYWxzTm9uRXhwaXJlZD10cnVlLCBBY2NvdW50Tm9uTG9ja2VkPXRydWUsIEdyYW50ZWQgQXV0aG9yaXRpZXM9W1JPTEVfQURNSU5dXSIsImlhdCI6MTc1MDkzMDQ5NywiZXhwIjoxNzUwOTY2NDk3fQ.u9JannlmLucML4gjRVYHp6KH0vDLSrI1c4Y5-_t25jQ
+Authorization: Bearer {{auth_token}}
 Accept: application/json
 
 ###
 
 GET http://localhost:8080/task/get/3
-Authorization: Bearer
+Authorization: Bearer {{auth_token}}
 Accept: application/json
 
 ###
@@ -49,3 +49,11 @@ Content-Type: application/json
   "username": "admin",
   "password": "admin"
 }
+
+> {% client.global.set("auth_token", response.body.token); %}
+
+###
+
+POST http://localhost:8080/auth/token-info
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
