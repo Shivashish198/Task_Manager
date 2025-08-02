@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    <style>
+        body { font-family: Arial; margin: 2rem; }
+        input, button { margin: 0.5rem; }
+        .task { margin-top: 1rem; }
+    </style>
+</head>
+<body>
+
+<h2>Login</h2>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<p id="login-status"></p>
+
+<hr>
+
+<h2>Add Task</h2>
+<input type="text" id="taskName" placeholder="Task Name">
+<input type="date" id="taskDate">
+<button onclick="addTask()">Add Task</button>
+
+<h2>Get Tasks</h2>
+<button onclick="getTasks()">Get All Tasks</button>
+<div id="tasks"></div>
+
+<h2>Search Task by Name</h2>
+<input type="text" id="searchName" placeholder="Task Name">
+<button onclick="searchTask()">Search</button>
+<div id="searchResult"></div>
+
+<h2>Delete Task</h2>
+<input type="number" id="deleteId" placeholder="Task ID">
+<button onclick="deleteTask()">Delete</button>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,6 +1,5 @@
 package com.api.task_manager.Model;
 
-import jakarta.validation.constraints.*;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.*;
@@ -13,13 +12,13 @@ public class Task {
     @GeneratedValue
     Long id;
 
-    @FutureOrPresent(message="Date cannot be past ")
     LocalDate date;
 
-    @NotBlank(message="Task name cannot be blank")
     String taskName;
 
     boolean comp;
 
     public Task() {}
+
+    //public Task(String taskName, LocalDate date, boolean comp) {}
 }

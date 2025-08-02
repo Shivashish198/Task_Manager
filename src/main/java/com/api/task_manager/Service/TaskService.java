@@ -5,7 +5,7 @@ import com.api.task_manager.Model.Task;
 import com.api.task_manager.Repository.TaskRepo;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class TaskService {
@@ -62,5 +62,10 @@ public class TaskService {
         Task task = repo.findById(id).orElseThrow(()-> new RuntimeException("Task not found"));
         task.setComp(true);
         repo.save(task);
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public void findByTaskName(String taskName) {
+        repo.findByTaskName(taskName);
     }
 }
