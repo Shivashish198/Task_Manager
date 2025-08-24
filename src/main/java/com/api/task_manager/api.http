@@ -54,8 +54,21 @@ POST http://localhost:8080/auth/login
 Content-Type: application/json
 
 {
-  "username": "admin",
-  "password": "admin"
+  "username": "Shivashish",
+  "password": "Shiv@123"
+}
+
+> {% client.global.set("auth_token", response.body.token); %}
+
+###
+
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "username": "Shivashish",
+  "password": "Shiv@123",
+  "role": "ADMIN"
 }
 
 > {% client.global.set("auth_token", response.body.token); %}
